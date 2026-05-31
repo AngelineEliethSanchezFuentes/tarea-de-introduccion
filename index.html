@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica de Introducción a la Programación</title>
+
+<style>
+body{
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color:#f8fafc;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:#38bdf8;
+    margin-bottom:10px;
+}
+
+h2{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+h3{
+    color:#facc15;
+    border-left:4px solid #facc15;
+    padding-left:10px;
+    margin-top:25px;
+}
+
+.codigo{
+    background:#1e293b;
+    border:1px solid #334155;
+    padding:15px;
+    border-radius:10px;
+    font-family: Consolas, monospace;
+    white-space: pre-wrap;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.imagenes{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.imagen-box{
+    text-align:center;
+}
+
+.imagen-box img{
+    width:180px;
+    border-radius:10px;
+    border:2px solid #38bdf8;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.imagen-box img:hover{
+    transform:scale(1.05);
+}
+
+.imagen-box p{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+}
+
+.modal img{
+    display:block;
+    margin:auto;
+    margin-top:2%;
+    max-width:90%;
+    max-height:90%;
+}
+
+.cerrar{
+    position:absolute;
+    top:15px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>Entrega de Ejercicios de tarea</h1>
+<h2>Alumno: ANGELINE ELIETH SANCHEZ FUENTES</h2>
+
+<h3>Imágenes de Evidencia</h3>
+
+<div class="imagenes">
+
+    <div class="imagen-box">
+        <img src="WhatsApp Image 2026-05-31 at 9.52.34 AM.jpeg" onclick="abrirImagen(this.src)">
+        <p>Captura 1</p>
+    </div>
+
+    <div class="imagen-box">
+        <img src="WhatsApp Image 2026-05-31 at 10.10.52 AM.jpeg" onclick="abrirImagen(this.src)">
+        <p>Captura 2</p>
+    </div>
+
+    <div class="imagen-box">
+        <img src="WhatsApp Image 2026-05-31 at 10.11.23 AM.jpeg" onclick="abrirImagen(this.src)">
+        <p>Captura 3</p>
+    </div>
+
+</div>
+
+<h3>Respuesta 1</h3>
+<div class="codigo">
+configuracion_red = ("172.16.0.10", 9090, True)
+
+print("Puerto asignado:", configuracion_red[1])
+</div>
+
+<h3>Respuesta 2</h3>
+<div class="codigo">
+periodo = ("Agosto", "Septiembre", "Octubre")
+
+print("Último mes del período:", periodo[-1])
+</div>
+
+<h3>Respuesta 3</h3>
+<div class="codigo">
+docente = ("D205", "Managua", "Tutor")
+
+codigo, sede, cargo = docente
+
+print("Código:", codigo)
+print("Sede:", sede)
+print("Cargo:", cargo)
+</div>
+
+<h3>Respuesta 4</h3>
+<div class="codigo">
+notas = (75, 80, 75, 90, 75, 85)
+
+print("La calificación 75 aparece", notas.count(75), "veces")
+</div>
+
+<h3>Respuesta 5</h3>
+<div class="codigo">
+asignaturas = ("Programación", "Bases de Datos")
+
+lista_asignaturas = list(asignaturas)
+lista_asignaturas[0] = "Algoritmos"
+
+asignaturas = tuple(lista_asignaturas)
+
+print(asignaturas)
+</div>
+
+<h3>Respuesta 6</h3>
+<div class="codigo">
+registros = ["U01", "U02", "U01", "U03", "U02"]
+
+usuarios_unicos = set(registros)
+
+print(usuarios_unicos)
+</div>
+
+<h3>Respuesta 7</h3>
+<div class="codigo">
+integrantes = set()
+
+integrantes.add("Carlos")
+integrantes.add("Lucía")
+
+integrantes.discard("Pedro")
+
+print(integrantes)
+</div>
+
+<h3>Respuesta 8</h3>
+<div class="codigo">
+parcial = {"Valeria", "Carlos", "Andrés", "Marta"}
+proyecto = {"Carlos", "Marta", "José", "Luis"}
+
+excelencia = parcial.intersection(proyecto)
+
+print("Estudiantes que aprobaron ambas evaluaciones:", excelencia)
+</div>
+
+<h3>Respuesta 9</h3>
+<div class="codigo">
+grupo_a = {"Python", "JavaScript"}
+grupo_b = {"Python", "C#"}
+
+todos_los_lenguajes = grupo_a.union(grupo_b)
+
+print("Universo total de lenguajes enseñados:", todos_los_lenguajes)
+</div>
+
+<h3>Respuesta 10</h3>
+<div class="codigo">
+matriculados = {"Daniel", "Paula", "Kevin", "Natalia"}
+asistentes = {"Daniel", "Natalia"}
+
+ausentes = matriculados.difference(asistentes)
+
+print("Estudiantes ausentes en la sesión:", ausentes)
+</div>
+
+<div id="modalImagen" class="modal">
+    <span class="cerrar" onclick="cerrarImagen()">&times;</span>
+    <img id="imagenGrande">
+</div>
+
+<script>
+function abrirImagen(src){
+    document.getElementById("modalImagen").style.display = "block";
+    document.getElementById("imagenGrande").src = src;
+}
+
+function cerrarImagen(){
+    document.getElementById("modalImagen").style.display = "none";
+}
+
+document.getElementById("modalImagen").onclick = function(e){
+    if(e.target === this){
+        cerrarImagen();
+    }
+}
+</script>
+
+</body>
+</html>
